@@ -127,4 +127,9 @@ app.use((req, res) => {
     res.sendFile(path.join(distPath, 'index.html'));
 });
 
-app.listen(PORT, () => console.log(`Backend Server running on port ${PORT}`));
+// For Vercel/Production export
+export default app;
+
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+    app.listen(PORT, () => console.log(`Backend Server running on port ${PORT}`));
+}
