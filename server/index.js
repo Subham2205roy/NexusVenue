@@ -123,7 +123,7 @@ export const verifyToken = (req, res, next) => {
 };
 
 // Catch-all route to serve the React index.html for any non-API routes
-app.get('/*', (req, res) => {
+app.use((req, res) => {
     res.sendFile(path.join(distPath, 'index.html'));
 });
 
